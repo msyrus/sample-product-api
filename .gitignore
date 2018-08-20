@@ -1,0 +1,6 @@
+*.env
+*.log
+
+build
+storage
+vendor

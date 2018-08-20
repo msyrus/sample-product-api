@@ -1,0 +1,1711 @@
+{
+	"info": {
+		"_postman_id": "010d2ec7-eb29-4fa1-832c-4cc3772320f3",
+		"name": "ProductInventory",
+		"description": "API Doc of Product Inventory",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"description": "Product endpoints",
+			"item": [
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 12345"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Test3\",\n\t\"price\": 200,\n\t\"weight\": 3,\n\t\"available\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/v1/products",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						},
+						"description": "To add new products"
+					},
+					"response": [
+						{
+							"id": "e6fe010e-a0cb-4b5c-aa42-44d20166a738",
+							"name": "201 - Create Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 12345",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Test3\",\n\t\"price\": 200,\n\t\"weight\": 3,\n\t\"available\": true\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "47",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 17:28:53 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":\"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef\"}"
+						},
+						{
+							"id": "14bcfe14-38e3-4f24-ad3e-213eaeb43f4b",
+							"name": "400 - Create Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": true
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 12345",
+										"disabled": false
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "48",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 17:43:54 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":[{\"id\":\"9AGJZkW9uk\",\"message\":\"EOF\"}]}"
+						},
+						{
+							"id": "6c975e6e-9436-4c55-b332-db66a3efc40f",
+							"name": "422 - Create Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": true
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 12345",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"\",\n\t\"price\": 0,\n\t\"weight\": -1,\n\t\"available\": true\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "144",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 17:31:43 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":[{\"id\":\"650FHj8PSm\",\"message\":\"invalid data\",\"details\":{\"Weight\":[\"is invalid\"],\"Name\":[\"is empty\"],\"Price\":[\"is required\"]}}]}"
+						},
+						{
+							"id": "9555edac-5860-4f19-9243-33eb7fe3c626",
+							"name": "401 - Create Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"Test3\",\n\t\"price\": 200,\n\t\"weight\": 3,\n\t\"available\": true\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "13",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 17:27:07 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								}
+							],
+							"cookie": [],
+							"body": "Unauthorized\n"
+						}
+					]
+				},
+				{
+					"name": "List Products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"available\": true\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/v1/products",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products"
+							]
+						},
+						"description": "List products with query"
+					},
+					"response": [
+						{
+							"id": "7d1a31c6-79e7-4907-9eb0-a3e9a867180c",
+							"name": "200 - List Products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"available\": true\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "422",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 19:19:34 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":[{\"id\":\"80ed21a1-9d61-4859-a56f-e09f569844fa\",\"name\":\"Test1\",\"price\":120,\"weight\":2,\"available\":false,\"avgRating\":0},{\"id\":\"03a9ea3a-82ef-4f40-8276-21786d3afe51\",\"name\":\"Test2\",\"price\":100,\"weight\":2,\"available\":true,\"avgRating\":1},{\"id\":\"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef\",\"name\":\"Test3\",\"price\":200,\"weight\":3,\"available\":false,\"avgRating\":4.5}],\"meta\":{\"offset\":0,\"take\":3,\"total\":3}}"
+						},
+						{
+							"id": "f12aee2a-5dcf-4f5e-8492-8ad498002fe6",
+							"name": "200 - Empty List Products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"available\": true\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products?name=test",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "50",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 19:24:18 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":[],\"meta\":{\"offset\":0,\"take\":0,\"total\":0}}"
+						},
+						{
+							"id": "30e95937-8fba-4c1d-8ab5-2afed7863d10",
+							"name": "200 - Query List Products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"available\": true\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products?available=false",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "available",
+											"value": "false"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "299",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 19:20:51 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":[{\"id\":\"80ed21a1-9d61-4859-a56f-e09f569844fa\",\"name\":\"Test1\",\"price\":120,\"weight\":2,\"available\":false,\"avgRating\":0},{\"id\":\"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef\",\"name\":\"Test3\",\"price\":200,\"weight\":3,\"available\":false,\"avgRating\":4.5}],\"meta\":{\"offset\":0,\"take\":2,\"total\":2}}"
+						},
+						{
+							"id": "11753aa2-bbd1-4d82-9d9a-ac093a3915f7",
+							"name": "200 - Paginate List Products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"available\": true\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products?skip=1&limit=2",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products"
+									],
+									"query": [
+										{
+											"key": "skip",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "298",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 19:22:29 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":[{\"id\":\"03a9ea3a-82ef-4f40-8276-21786d3afe51\",\"name\":\"Test2\",\"price\":100,\"weight\":2,\"available\":true,\"avgRating\":1},{\"id\":\"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef\",\"name\":\"Test3\",\"price\":200,\"weight\":3,\"available\":false,\"avgRating\":4.5}],\"meta\":{\"offset\":1,\"take\":2,\"total\":3}}"
+						}
+					]
+				},
+				{
+					"name": "Get Product",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://{{host}}/api/v1/products/03a9ea3a-82ef-4f40-8276-21786d3afe51",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"03a9ea3a-82ef-4f40-8276-21786d3afe51"
+							]
+						},
+						"description": "Get a single product by ID"
+					},
+					"response": [
+						{
+							"id": "e2851b80-06d1-4b58-b779-78ebfbf7a083",
+							"name": "404 - Get Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/invalid_id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"invalid_id"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "61",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jul 2018 05:29:08 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":[{\"id\":\"70M6G9qsOy\",\"message\":\"product not found\"}]}"
+						},
+						{
+							"id": "96a69f30-de6d-448c-89b8-9002a97ff0c6",
+							"name": "200 - Get Product",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/03a9ea3a-82ef-4f40-8276-21786d3afe51",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"03a9ea3a-82ef-4f40-8276-21786d3afe51"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "131",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Jul 2018 05:27:54 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":{\"id\":\"03a9ea3a-82ef-4f40-8276-21786d3afe51\",\"name\":\"Test2\",\"price\":100,\"weight\":2,\"available\":true,\"avgRating\":1}}"
+						}
+					]
+				},
+				{
+					"name": "Delete Product",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer 12345"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://{{host}}/api/v1/products/b78d9caa-3d5e-42e6-bb56-13fb28072ab1",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"b78d9caa-3d5e-42e6-bb56-13fb28072ab1"
+							]
+						},
+						"description": "To delete a product from list"
+					},
+					"response": [
+						{
+							"id": "72bf24e4-dd85-4557-bde4-cf5a7be14642",
+							"name": "401 - Delete Product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/b78d9caa-3d5e-42e6-bb56-13fb28072ab1",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"b78d9caa-3d5e-42e6-bb56-13fb28072ab1"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "13",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 18:05:49 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								}
+							],
+							"cookie": [],
+							"body": "Unauthorized\n"
+						},
+						{
+							"id": "db787cb8-b4c4-4571-bd6a-d5dc683d8db7",
+							"name": "200 - Delete Product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer 12345"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/b78d9caa-3d5e-42e6-bb56-13fb28072ab1",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"b78d9caa-3d5e-42e6-bb56-13fb28072ab1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "13",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 17:49:00 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":true}"
+						}
+					]
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 1234"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Test2\",\n    \"price\": 100,\n    \"weight\": 2,\n    \"available\": false\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/v1/products/03a9ea3a-82ef-4f40-8276-21786d3afe51",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"03a9ea3a-82ef-4f40-8276-21786d3afe51"
+							]
+						},
+						"description": "Update a product by ID"
+					},
+					"response": [
+						{
+							"id": "39a56114-60a8-434a-b9d0-33d4e6842b92",
+							"name": "401 - Update Product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test2\",\n    \"price\": 100,\n    \"weight\": 2,\n    \"available\": false,\n    \"avgRating\": 1\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/03a9ea3a-82ef-4f40-8276-21786d3afe51",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"03a9ea3a-82ef-4f40-8276-21786d3afe51"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "13",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 17:52:39 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								}
+							],
+							"cookie": [],
+							"body": "Unauthorized\n"
+						},
+						{
+							"id": "bcb9bfd3-30f8-4d41-bd7b-7183b3871263",
+							"name": "404 - Update Product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 1234",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test2\",\n    \"price\": 100,\n    \"weight\": 2,\n    \"available\": false\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/invalid_id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"invalid_id"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "61",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 17:58:12 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":[{\"id\":\"rd5duc1Jzp\",\"message\":\"product not found\"}]}"
+						},
+						{
+							"id": "d253fe78-a866-443a-a329-db5d449e9960",
+							"name": "200 - Update Product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 1234"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test2\",\n    \"price\": 100,\n    \"weight\": 2,\n    \"available\": false\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/03a9ea3a-82ef-4f40-8276-21786d3afe51",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"03a9ea3a-82ef-4f40-8276-21786d3afe51"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "47",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 17:54:37 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":\"03a9ea3a-82ef-4f40-8276-21786d3afe51\"}"
+						},
+						{
+							"id": "4f6ed3d4-fa2e-4356-9260-25b0101f3d45",
+							"name": "400 - Update Product",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 1234",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"Test2\",\n    \"price\": \"100\",\n    \"weight\": 2,\n    \"available\": false\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/03a9ea3a-82ef-4f40-8276-21786d3afe51",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"03a9ea3a-82ef-4f40-8276-21786d3afe51"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "133",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 17:56:03 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":[{\"id\":\"PtUCtCMihX\",\"message\":\"json: cannot unmarshal string into Go struct field updateProductBody.price of type int\"}]}"
+						}
+					]
+				},
+				{
+					"name": "Partial Update Product",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer 1234"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"available\": false\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/v1/products/6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef"
+							]
+						},
+						"description": "Partially Update a Product"
+					},
+					"response": [
+						{
+							"id": "eb42c568-4ae7-4cb2-996b-263f577702b7",
+							"name": "401 - Partial Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"available\": false\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "13",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 18:02:54 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								}
+							],
+							"cookie": [],
+							"body": "Unauthorized\n"
+						},
+						{
+							"id": "4e313cde-dd26-4f8c-a1b0-3adb268c6a1f",
+							"name": "404 - Partial Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 1234",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"available\": false\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/invalid_id",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"invalid_id"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "61",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 18:03:33 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":[{\"id\":\"D2t4iaRN4J\",\"message\":\"product not found\"}]}"
+						},
+						{
+							"id": "2c33c728-d296-4ccb-a6a2-9e96b3b0c329",
+							"name": "200 - Partial Update",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer 1234",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"available\": false\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "47",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 18:01:48 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":\"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef\"}"
+						}
+					]
+				},
+				{
+					"name": "Rate Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\": 5\n}"
+						},
+						"url": {
+							"raw": "http://{{host}}/api/v1/products/6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef/rating",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"products",
+								"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef",
+								"rating"
+							]
+						},
+						"description": "To add rating to a Product by ID"
+					},
+					"response": [
+						{
+							"id": "957dc35a-8d19-4536-9356-3bb43a73b8d7",
+							"name": "404 - Rate Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"value\": 5\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/invalid_id/rating",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"invalid_id",
+										"rating"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "61",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 18:09:16 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"errors\":[{\"id\":\"p767MzvICR\",\"message\":\"product not found\"}]}"
+						},
+						{
+							"id": "2fab60c3-bc66-437f-b107-691ba6bb6884",
+							"name": "200 - Rate Product",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"disabled": false
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"value\": 4\n}"
+								},
+								"url": {
+									"raw": "http://{{host}}/api/v1/products/6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef/rating",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"products",
+										"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef",
+										"rating"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "47",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 18:10:01 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":\"971539fd-9d28-4a73-a6a8-25b499281e55\"}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "System",
+			"description": "",
+			"item": [
+				{
+					"name": "System Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://{{host}}/api/v1/system/health",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"system",
+								"health"
+							]
+						},
+						"description": "Checks if system is OK"
+					},
+					"response": [
+						{
+							"id": "d6856918-389c-4ab3-b727-a6b8bc1e1650",
+							"name": "200 - System Health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/v1/system/health",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"system",
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "13",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 18:27:46 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":true}"
+						}
+					]
+				},
+				{
+					"name": "System Ready",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://{{host}}/api/v1/system/ready",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"system",
+								"ready"
+							]
+						},
+						"description": "Checks if system is ready to serve"
+					},
+					"response": [
+						{
+							"id": "2a060424-63a9-46bd-943a-567953bc06a5",
+							"name": "200 - System Ready",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/v1/system/ready",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"system",
+										"ready"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "13",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 18:29:45 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "{\"data\":true}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pprof",
+			"description": "",
+			"item": [
+				{
+					"name": "Pprof Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://{{host}}/api/v1/debug/pprof",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"debug",
+								"pprof"
+							]
+						},
+						"description": "Index page of pprof"
+					},
+					"response": [
+						{
+							"id": "ebd916d4-312b-4886-ab2f-a8f7aedd78c3",
+							"name": "200 - Pprof Index",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://{{host}}/api/v1/debug/pprof",
+									"protocol": "http",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"debug",
+										"pprof"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "Content-Length",
+									"value": "517",
+									"name": "Content-Length",
+									"description": "The length of the response body in octets (8-bit bytes)"
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/html; charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 17 Jul 2018 18:30:49 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								}
+							],
+							"cookie": [],
+							"body": "<html>\n<head>\n<title>/debug/pprof/</title>\n</head>\n<body>\n/debug/pprof/<br>\n<br>\nprofiles:<br>\n<table>\n\n<tr><td align=right>0<td><a href=\"block?debug=1\">block</a>\n\n<tr><td align=right>9<td><a href=\"goroutine?debug=1\">goroutine</a>\n\n<tr><td align=right>1<td><a href=\"heap?debug=1\">heap</a>\n\n<tr><td align=right>0<td><a href=\"mutex?debug=1\">mutex</a>\n\n<tr><td align=right>10<td><a href=\"threadcreate?debug=1\">threadcreate</a>\n\n</table>\n<br>\n<a href=\"goroutine?debug=2\">full goroutine stack dump</a><br>\n</body>\n</html>\n"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "0222a920-cf75-4571-80c8-e7de18a09c23",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "5c4c9c05-c69d-46fc-aeb7-67a14116f0a0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,41 @@
+version: '2'
+services:
+    go:
+        build: .
+        command: ["serve", "--config", "/etc/config.yml"]
+        volumes:
+            - ./config.example.yml:/etc/config.yml
+        ports:
+            - "80:8080"
+        links:
+            - postgres
+            # - mongodb
+            # - redis
+        environment:
+            DEBUG: 'true'
+            PORT: '8080'
+
+    postgres:
+        image: postgres:9.5-alpine
+        restart: unless-stopped
+        volumes:
+            - ./table.sql:/docker-entrypoint-initdb.d/table.sql
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: pg_user
+            POSTGRES_PASSWORD: secret
+            POSTGRES_DB: pg_db
+
+    # mongodb:
+    #     image: mongo:3.4
+    #     restart: unless-stopped
+    #     ports:
+    #         - "27017:27017"
+
+    # redis:
+    #     image: redis:4-alpine
+    #     restart: unless-stopped
+    #     ports:
+    #         - "6379:6379"
+

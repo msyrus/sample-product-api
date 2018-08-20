@@ -1,0 +1,8 @@
+host:
+port: 8080
+gracefulWait: 30
+readTimeout: 0
+writeTimeout: 0
+idleTimeout: 0
+postgres:
+  uri: "postgres://pg_user:secret@postgres/pg_db?sslmode=disable"

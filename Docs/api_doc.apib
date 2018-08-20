@@ -1,0 +1,267 @@
+FORMAT: 1A
+HOST: localhost/api/v1
+
+# Sample Product Inventory
+API Doc of Product Inventory
+
+## Authentication
+This API uses OAuth v2 Bearer Token / Personal Access Token for its authentication.
+
+# Group Product
+
+## Create Product [POST /products]
+To add new products
+
++ Request
+
+    + Body
+
+            {
+                "name": "Test3",
+                "price": 200,
+                "weight": 3,
+                "available": true
+            }
+
+
++ Response 201 (application/json)
+
+    + Body
+
+            {"data":"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef"}
+
+
++ Response 400 (application/json)
+
+        Bad Request
+
+    + Body
+
+            {"errors":[{"id":"9AGJZkW9uk","message":"EOF"}]}
+
+
++ Response 401
+
+        Unauthorized
+
+
++ Response 422 (application/json) 
+
+        Unprocessable Entity
+
+    + Body
+
+            {"errors":[{"id":"650FHj8PSm","message":"invalid data","details":{"Weight":["is invalid"],"Name":["is empty"],"Price":["is required"]}}]}
+
+
+## List Products [GET /products{?name,available,weight,price,skip,limit}]
+List products with query
+
++ Parameters
+	+ name (string, optional) - product name
+	+ available (boolean, optional) - product type
+	+ weight (number, optional) - product weight
+	+ price (number, optional) - product price
+	+ skip (number, optional) - offset. Default 0
+	+ limit (number, optional) - limit, Default 20
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"data":[{"id":"80ed21a1-9d61-4859-a56f-e09f569844fa","name":"Test1","price":120,"weight":2,"available":false,"avgRating":0},{"id":"03a9ea3a-82ef-4f40-8276-21786d3afe51","name":"Test2","price":100,"weight":2,"available":true,"avgRating":1},{"id":"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef","name":"Test3","price":200,"weight":3,"available":false,"avgRating":4.5}],"meta":{"offset":0,"take":3,"total":3}}
+
+
+## Single Product [/products/{id}]
+
+### Get Product [GET]
+Get a single product by ID
+
++ Parameters
+
+	+ id (string, required) - id of a product
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"data":{"id":"03a9ea3a-82ef-4f40-8276-21786d3afe51","name":"Test2","price":100,"weight":2,"available":true,"avgRating":1}}
+
+
++ Response 404 (application/json)
+
+    Not Found
+
+    + Body
+
+            {"errors":[{"id":"70M6G9qsOy","message":"product not found"}]}
+
+
+### Update Product [PUT]
+Update a product by id
+
++ Parameters
+
+	+ id (string, required) - id of a product
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "name": "Test2",
+                "price": 100,
+                "weight": 2,
+                "available": false
+            }
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"data":"03a9ea3a-82ef-4f40-8276-21786d3afe51"}
+
+
++ Response 400 (application/json)
+
+    Bad Request
+
+    + Body
+
+            {"errors":[{"id":"PtUCtCMihX","message":"json: cannot unmarshal string into Go struct field updateProductBody.price of type int"}]}
+
+
++ Response 401 
+
+        Unauthorized
+
+
++ Response 404 (application/json)
+
+    Not Found
+
+    + Body
+
+            {"errors":[{"id":"rd5duc1Jzp","message":"product not found"}]}
+
+
+
+### Delete Product [DELETE]
+To delete a product from list
+
++ Parameters
+
+	+ id (string, required) - id of product
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"data":true}
+
+
++ Response 401 
+
+        Unauthorized
+
+
+### Partial Update Product [PATCH]
+Partially Update a Product
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "available": false
+            }
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"data":"6ff2e9f7-2fc4-4991-9cdd-2e2fc076a8ef"}
+
+
++ Response 401 
+
+        Unauthorized
+
+
++ Response 404 (application/json)
+
+    Not Found
+
+    + Body
+
+            {"errors":[{"id":"D2t4iaRN4J","message":"product not found"}]}
+
+
+## Rate Product [POST /products/{id}/rating]
+To add rating to a Product by ID
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "value": 5
+            }
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"data":"971539fd-9d28-4a73-a6a8-25b499281e55"}
+
+
++ Response 404 (application/json)
+
+    Not Found
+
+    + Body
+
+            {"errors":[{"id":"p767MzvICR","message":"product not found"}]}
+
+
+
+# Group System
+
+## System Health [/system/health]
+
+### System Health [GET]
+Checks if system is OK
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"data":true}
+
+
+
+## System Ready [/system/ready]
+
+### System Ready [GET]
+Checks if system is ready to serve
+
++ Response 200 (application/json)
+
+    + Body
+
+            {"data":true}
+
+
+
+
+# Group Pprof
+
+## Debug Pprof [/debug/pprof]
+
+### Pprof Index [GET]
+Index page of pprof
+
++ Response 200 (text/html)
+
