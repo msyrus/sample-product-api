@@ -1,0 +1,68 @@
+image: golang:alpine
+
+variables:
+  GO_PROJECT: github.com/msyrus/simple-product-inv
+
+stages:
+  - test
+  - build
+  - deploy
+
+unit:
+  stage: test
+  before_script:
+    - apk add --no-cache --update git
+    - mkdir -p ${GOPATH}/src/${GO_PROJECT}
+    - cp -r ${CI_PROJECT_DIR}/* ${GOPATH}/src/${GO_PROJECT}/
+    - cd ${GOPATH}/src/${GO_PROJECT}
+    - go get -u github.com/golang/dep/cmd/dep
+    - dep ensure -v -vendor-only
+  script:
+    - go test -coverprofile=coverage.out -v ./...
+    - go tool cover -html=coverage.out -o ${CI_PROJECT_DIR}/coverage.html
+  artifacts:
+    paths:
+      - coverage.html
+    expire_in: 1 week
+
+build-and-publish:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - apk add --no-cache --update git
+  script:
+    - docker build -t=msyrus/simple-product-inv:"${CI_COMMIT_TAG}" .
+    - echo ${docker_pass} | docker login --username msyrus --password-stdin
+    - docker push msyrus/simple-product-inv:"${CI_COMMIT_TAG}"
+  only:
+    - tags
+
+deploy-production:
+  stage: deploy
+  variables:
+    GIT_STRATEGY: none
+  image: msyrus/simple-product-inv:"${CI_COMMIT_TAG}"
+  when: manual
+  only:
+    - tags
+  before_script:
+    - echo ${gke_service_key} > ${HOME}/gcloud-service-key.json
+    - echo ${gcr_service_key} > ${HOME}/gcs-service-key.json
+    - export GOOGLE_APPLICATION_CREDENTIALS=${HOME}/gcs-service-key.json
+    - apk add --update alpine-sdk
+  script:
+    - gcloud auth activate-service-account --key-file=${HOME}/gcloud-service-key.json
+    - gcloud --quiet config set project ${gcp_project}
+    - gcloud --quiet config set compute/zone asia-east1-a
+    - gcloud --quiet container clusters get-credentials ${gcp_cluster}
+    - curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get > get_helm.sh
+    - chmod 700 get_helm.sh
+    - ./get_helm.sh
+    - helm init
+    - helm plugin install https://github.com/nouney/helm-gcs --version 0.1.4
+    - helm gcs init gs://msyrus-helm-repo
+    - helm repo add msyrus-helm-repo gs://msyrus-helm-repo
+    - helm repo update
+    - helm upgrade --install product msyrus-helm-repo/product --set product.imgTag="${CI_COMMIT_TAG}",postgres.pvStorageClass="standard"
