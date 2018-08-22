@@ -1,0 +1,72 @@
+apiVersion: "apps/v1beta1"
+kind: "StatefulSet"
+metadata:
+  name: "product-pg"
+  namespace: "{{.Values.product.namespace}}"
+spec:
+  serviceName: "postgres"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "product-pg"
+  template:
+    metadata:
+      labels:
+        app: "product-pg"
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: "postgres"
+        image: "postgres:10-alpine"
+        env:
+        - name: "PGDATA"
+          value: "/var/lib/postgresql/data/pgdata"
+        - name: "POSTGRES_USER"
+          valueFrom:
+            secretKeyRef:
+              name: "postgres-secret"
+              key: "username"
+        - name: "POSTGRES_PASSWORD"
+          valueFrom:
+            secretKeyRef:
+              name: "postgres-secret"
+              key: "password"
+        - name: "POSTGRES_DB"
+          valueFrom:
+            secretKeyRef:
+              name: "postgres-secret"
+              key: "database"
+        ports:
+        - containerPort: "{{.Values.postgres.port}}"
+          name: "pg-port"
+          protocol: "TCP"
+        volumeMounts:
+        - name: "product-pg-storage"
+          mountPath: /var/lib/postgresql/data
+
+  volumeClaimTemplates:
+  - metadata:
+      name: "product-pg-storage"
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      storageClassName: "{{.Values.postgres.pvStorageClass}}"
+      resources:
+        requests:
+          storage: "{{.Values.postgres.pvSpace}}"
+
+---
+
+apiVersion: "v1"
+kind: "Service"
+metadata:
+  name: "product-pg-svc"
+  namespace: "{{.Values.product.namespace}}"
+  labels:
+    app: "product-db"
+spec:
+  ports:
+  - port: 5432
+    targetPort: "pg-port"
+  clusterIP: "None"
+  selector:
+    app: "product-pg"

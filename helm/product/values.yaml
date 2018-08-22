@@ -1,0 +1,10 @@
+postgres:
+  port: 5432
+  pvSpace: 5Gi
+  pvStorageClass: pd-ssd
+
+product:
+  namespace: product
+  imgTag: latest
+  web:
+    port: 8080

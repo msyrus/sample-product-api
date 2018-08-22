@@ -1,0 +1,52 @@
+apiVersion: "apps/v1beta1"
+kind: "Deployment"
+metadata:
+  name: "simple-product-deployment"
+  namespace: "{{.Values.product.namespace}}"
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: "simple-product-inv-app"
+    spec:
+      containers:
+      - name: "product-app"
+        image: "msyrus/simple-product-inv:{{.Values.product.imgTag}}"
+        args: ["serve", "--config", "/etc/product/config.yml"]
+        ports:
+        - containerPort: {{.Values.product.web.port}}
+          name: "product-web-port"
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            port: "product-web-port"
+            path: "/system/health"
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        volumeMounts:
+        - name: "product-config-volume"
+          mountPath: "/etc/product/"
+      volumes:
+      - name: "product-config-volume"
+        configMap:
+          name: "simple-product-inv-config"
+          items:
+          - key: "product-config"
+            path: "config.yml"
+
+---
+
+kind: "Service"
+apiVersion: "v1"
+metadata:
+  name: "simple-product-svc"
+  namespace: "{{.Values.product.namespace}}"
+spec:
+  type: "LoadBalancer"
+  selector:
+    app: "simple-product-inv-app"
+  ports:
+  - name: product-svc-port
+    port: 80
+    targetPort: "product-web-port"
